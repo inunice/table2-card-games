@@ -8,7 +8,7 @@ interface CardGameProps {
 export default function CardGameCard({cardGame}: CardGameProps) {
 
     const {isFavorited, toggleFavorite} = useFavorite();
-    
+
     return (
         <div className="">
             <div className="flex flex-col px-4 py-4 bg-muted rounded-t-xl">

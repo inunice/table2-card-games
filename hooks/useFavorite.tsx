@@ -1,10 +1,10 @@
 import { useState } from "react";
 
 export default function useFavorite() {
-    const [isFavorited, setIsFavorited] = useState(true);
+    const [isFavorited, setisFavorited] = useState(true);
 
     const toggleFavorite = async () => {
-        setIsFavorited(!isFavorited);
+        setisFavorited(!isFavorited);
 
         // POST Request here
     }
