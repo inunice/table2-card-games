@@ -1,5 +1,7 @@
 @import "tailwindcss";
 
+/* @import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@300..700&display=swap'); */
+
 @theme {
   --color-coral: #ee758a;
   --color-tea: #68b894;
@@ -34,7 +36,7 @@
   --ui-border-inverted: var(--ui-color-neutral-900);
 }
 
-html {
+body {
   font-family: var(--font-display);
 }
 
