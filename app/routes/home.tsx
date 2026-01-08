@@ -9,32 +9,38 @@ const data: CardGame[] = [
     {
         "id": 1,
         "name": "Flip 7",
-        "description": "Six Seven!"
+        "description": "Six Seven!",
+        "isFavorite": true
     },
     {
         "id": 2,
         "name": "Uno No Mercy",
-        "description": "Sad uno"
+        "description": "Sad uno",
+        "isFavorite": false
     },
         {
         "id": 1,
         "name": "Flip 7",
-        "description": "Six Seven!"
+        "description": "Six Seven!",
+        "isFavorite": true
     },
     {
         "id": 2,
         "name": "Uno No Mercy",
-        "description": "Sad uno"
+        "description": "Sad uno",
+        "isFavorite": false
     },
         {
         "id": 3,
         "name": "Flip 67",
-        "description": "Six Ten!"
+        "description": "Six Ten!",
+        "isFavorite": true
     },
     {
         "id": 4,
         "name": "Uno With Mercy",
-        "description": "Happy uno"
+        "description": "Happy uno",
+        "isFavorite": true
     }
 ]
 

@@ -5,6 +5,7 @@ import { ServerRouter, UNSAFE_withComponentProps, Outlet, UNSAFE_withErrorBounda
 import { isbot } from "isbot";
 import { renderToPipeableStream } from "react-dom/server";
 import { Heart, Dices } from "lucide-react";
+import { useState } from "react";
 const streamTimeout = 5e3;
 function handleRequest(request, responseStatusCode, responseHeaders, routerContext, loadContext) {
   if (request.method.toUpperCase() === "HEAD") {
@@ -118,16 +119,33 @@ const route0 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProper
   default: root,
   links
 }, Symbol.toStringTag, { value: "Module" }));
+function FavoriteButton({ isFavorited, onToggle }) {
+  return /* @__PURE__ */ jsx(
+    "button",
+    {
+      onClick: () => onToggle(!isFavorited),
+      children: /* @__PURE__ */ jsx(Heart, { size: 18, className: `${isFavorited ? "text-coral fill-current" : "text-white"}` })
+    }
+  );
+}
+function useFavorite() {
+  const [isFavorited, setisFavorited] = useState(true);
+  const toggleFavorite = async () => {
+    setisFavorited(!isFavorited);
+  };
+  return {
+    isFavorited,
+    toggleFavorite
+  };
+}
 function CardGameCard({ cardGame }) {
+  const { isFavorited, toggleFavorite } = useFavorite();
   return /* @__PURE__ */ jsxs("div", { className: "", children: [
     /* @__PURE__ */ jsxs("div", { className: "flex flex-col px-4 py-4 bg-muted rounded-t-xl", children: [
       /* @__PURE__ */ jsx("span", { className: "text-lg font-semibold text-wood", children: cardGame.name }),
       /* @__PURE__ */ jsx("span", { className: "text-wood-muted", children: cardGame.description })
     ] }),
-    /* @__PURE__ */ jsxs("div", { className: "flex flex-row justify-end bg-wood rounded-b-xl px-4 py-2", children: [
-      /* @__PURE__ */ jsx(Heart, { size: 18, className: "text-white" }),
-      /* @__PURE__ */ jsx(Heart, { size: 18, className: "text-coral fill-current" })
-    ] })
+    /* @__PURE__ */ jsx("div", { className: "flex flex-row justify-end bg-wood rounded-b-xl px-4 py-2", children: /* @__PURE__ */ jsx(FavoriteButton, { isFavorited, onToggle: toggleFavorite }) })
   ] });
 }
 const data = [{
@@ -179,7 +197,7 @@ const route1 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProper
   __proto__: null,
   default: home
 }, Symbol.toStringTag, { value: "Module" }));
-const serverManifest = { "entry": { "module": "/assets/entry.client-BmDBpHZU.js", "imports": ["/assets/chunk-EPOLDU6W-Wp3N_t67.js"], "css": [] }, "routes": { "root": { "id": "root", "parentId": void 0, "path": "", "index": void 0, "caseSensitive": void 0, "hasAction": false, "hasLoader": false, "hasClientAction": false, "hasClientLoader": false, "hasClientMiddleware": false, "hasErrorBoundary": true, "module": "/assets/root-DeU44gLX.js", "imports": ["/assets/chunk-EPOLDU6W-Wp3N_t67.js"], "css": ["/assets/root-B8-TY2ey.css"], "clientActionModule": void 0, "clientLoaderModule": void 0, "clientMiddlewareModule": void 0, "hydrateFallbackModule": void 0 }, "routes/home": { "id": "routes/home", "parentId": "root", "path": void 0, "index": true, "caseSensitive": void 0, "hasAction": false, "hasLoader": false, "hasClientAction": false, "hasClientLoader": false, "hasClientMiddleware": false, "hasErrorBoundary": false, "module": "/assets/home-C1arRewK.js", "imports": ["/assets/chunk-EPOLDU6W-Wp3N_t67.js"], "css": [], "clientActionModule": void 0, "clientLoaderModule": void 0, "clientMiddlewareModule": void 0, "hydrateFallbackModule": void 0 } }, "url": "/assets/manifest-e9982235.js", "version": "e9982235", "sri": void 0 };
+const serverManifest = { "entry": { "module": "/assets/entry.client-BmDBpHZU.js", "imports": ["/assets/chunk-EPOLDU6W-Wp3N_t67.js"], "css": [] }, "routes": { "root": { "id": "root", "parentId": void 0, "path": "", "index": void 0, "caseSensitive": void 0, "hasAction": false, "hasLoader": false, "hasClientAction": false, "hasClientLoader": false, "hasClientMiddleware": false, "hasErrorBoundary": true, "module": "/assets/root-DeU44gLX.js", "imports": ["/assets/chunk-EPOLDU6W-Wp3N_t67.js"], "css": ["/assets/root-B8-TY2ey.css"], "clientActionModule": void 0, "clientLoaderModule": void 0, "clientMiddlewareModule": void 0, "hydrateFallbackModule": void 0 }, "routes/home": { "id": "routes/home", "parentId": "root", "path": void 0, "index": true, "caseSensitive": void 0, "hasAction": false, "hasLoader": false, "hasClientAction": false, "hasClientLoader": false, "hasClientMiddleware": false, "hasErrorBoundary": false, "module": "/assets/home-BGw4ghLc.js", "imports": ["/assets/chunk-EPOLDU6W-Wp3N_t67.js"], "css": [], "clientActionModule": void 0, "clientLoaderModule": void 0, "clientMiddlewareModule": void 0, "hydrateFallbackModule": void 0 } }, "url": "/assets/manifest-24576af2.js", "version": "24576af2", "sri": void 0 };
 const assetsBuildDirectory = "build/client";
 const basename = "/";
 const future = { "unstable_optimizeDeps": false, "unstable_subResourceIntegrity": false, "unstable_trailingSlashAwareDataRequests": false, "v8_middleware": false, "v8_splitRouteModules": false, "v8_viteEnvironmentApi": false };
