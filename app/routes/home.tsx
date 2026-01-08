@@ -42,7 +42,7 @@ export default function Home() {
   return (
     <div className="flex flex-col mx-20 my-12 gap-5">
       <div className="flex flex-row justify-center items-center gap-1">
-        <Dices className="text-5xl text-ocean" />
+        <Dices size={32} className="text-ocean" />
         <span className="text-3xl font-bold text-coral">Janine's Card Games</span>
       </div>
       <div className="grid sm:grid-cols-3 gap-4 grid-cols-2">
