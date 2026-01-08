@@ -1,10 +1,18 @@
-import { Heart } from 'lucide-react';
+import { useState } from "react";
+import FavoriteButton from "./FavoriteButton";
 
 interface CardGameProps {
     cardGame: CardGame;
 }
 
 export default function CardGameCard({cardGame}: CardGameProps) {
+
+    const [isFavorited, setIsFavorited] = useState(true);
+
+    const toggleFavorite = (nextValue: boolean) => {
+        setIsFavorited(!isFavorited);
+    }
+
     return (
         <div className="">
             <div className="flex flex-col px-4 py-4 bg-muted rounded-t-xl">
@@ -12,8 +20,7 @@ export default function CardGameCard({cardGame}: CardGameProps) {
                 <span className="text-wood-muted">{cardGame.description}</span>
             </div>
             <div className="flex flex-row justify-end bg-wood rounded-b-xl px-4 py-2">
-                <Heart size={18} className="text-white" />
-                <Heart size={18} className="text-coral fill-current" />
+                <FavoriteButton isFavorited={isFavorited} onToggle={toggleFavorite} />
             </div>
         </div>
     );
