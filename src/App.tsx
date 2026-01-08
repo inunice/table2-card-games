@@ -2,10 +2,13 @@ import CardGameCard from "./components/CardGameCard"
 import AddGameForm from "./components/AddGameForm"
 import { cardService } from "./services/cardService";
 import { useState, useEffect } from "react";
+import { Loader } from 'lucide-react';
 
 import { Dices } from 'lucide-react';
 
 export default function Home() {
+
+  const [loading, setLoading] = useState(true);
 
   // function isFavorite(current: CardGame) {
   //   return current.isFavorite === true;
@@ -20,7 +23,7 @@ export default function Home() {
   useEffect(() => {
     const fetchCardGames = async () => {
       try {
-        // setLoading(true);
+        setLoading(true);
         const res = await cardService.getAll();
         console.log(res);
         setData(res);
@@ -28,9 +31,9 @@ export default function Home() {
       catch (err) {
         // setError(err.message);
       }
-      // finally {
-      //   setLoading(false);
-      // }
+      finally {
+        setLoading(false);
+      }
     };
 
     fetchCardGames();
@@ -41,22 +44,24 @@ export default function Home() {
   };
 
   return (
-    <div className="flex flex-col mx-20 my-12 gap-5">
-
+    <div className="flex flex-col sm:mx-36 my-12 gap-10">
       <div className="flex flex-row justify-center items-center gap-1">
         <Dices size={32} className="text-ocean" />
         <span className="text-3xl font-bold text-coral">Janine's Card Games</span>
       </div>
-
-      <div className="grid sm:grid-cols-4 gap-4 grid-cols-3">
+      {loading && <div className="flex flex-col justify-center items-center gap-2">
+        <Loader className="animate-spin" />
+        <span className="text-2xl font-semibold text-wood">Loading...</span>
+      </div>}
+      <div className="grid sm:grid-cols-4 gap-4 grid-cols-2">
       {data.map((cardGame) => (
         <CardGameCard cardGame={cardGame}/>
       ))}
       </div>
 
-      <div>
+      {!loading && <div>
         <AddGameForm onGameAdded={handleNewGame}/>
-      </div>
+      </div>}
     </div>
   );
 }
