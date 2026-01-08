@@ -24,5 +24,15 @@ export const cardService = {
 
     if (!response.ok) throw new Error('Failed to update favorite status');
     return response.json();
+  },
+
+  create: async (gameData) => {
+    const res = await fetch(`${BASE_URL}/cardgames`, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(gameData),
+    });
+    if (!res.ok) throw new Error("Failed to create game");
+    return res.json();
   }
 };

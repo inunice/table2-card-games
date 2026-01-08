@@ -1,4 +1,5 @@
 import CardGameCard from "./components/CardGameCard"
+import AddGameForm from "./components/AddGameForm"
 import { cardService } from "./services/cardService";
 import { useState, useEffect } from "react";
 
@@ -35,6 +36,10 @@ export default function Home() {
     fetchCardGames();
   }, []); 
 
+  const handleNewGame = (newGame: CardGame) => {
+    setData((prevData) => [newGame, ...prevData]);
+  };
+
   return (
     <div className="flex flex-col mx-20 my-12 gap-5">
 
@@ -43,10 +48,14 @@ export default function Home() {
         <span className="text-3xl font-bold text-coral">Janine's Card Games</span>
       </div>
 
-      <div className="grid sm:grid-cols-3 gap-4 grid-cols-2">
+      <div className="grid sm:grid-cols-4 gap-4 grid-cols-3">
       {data.map((cardGame) => (
         <CardGameCard cardGame={cardGame}/>
       ))}
+      </div>
+
+      <div>
+        <AddGameForm onGameAdded={handleNewGame}/>
       </div>
     </div>
   );

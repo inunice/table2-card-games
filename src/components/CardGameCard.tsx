@@ -11,7 +11,10 @@ export default function CardGameCard({cardGame}: CardGameProps) {
 
     return (
         <div className="">
-            <div className="flex flex-col px-4 py-4 bg-muted rounded-t-xl">
+            <div className="rounded-t-xl w-full">
+                <img className="w-full h-full aspect-3/4 object-cover rounded-t-xl" src="https://media.cnn.com/api/v1/images/stellar/prod/gettyimages-1577650146.jpg?q=w_2000,c_fill/f_webp" />
+            </div>
+            <div className="flex flex-col px-4 py-4 bg-muted">
                 <span className="text-lg font-semibold text-wood">{cardGame.name}</span>
                 <span className="text-wood-muted">{cardGame.description}</span>
             </div>

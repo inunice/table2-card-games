@@ -3,7 +3,8 @@ declare global {
         id: number,
         name: string,
         description: string,
-        isFavorite: boolean
+        isFavorite: boolean,
+        image: string,
     }
 }
 
