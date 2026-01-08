@@ -7,7 +7,7 @@ interface CardGameProps {
 
 export default function CardGameCard({cardGame}: CardGameProps) {
 
-    const {isFavorite, toggleFavorite} = useFavorite(cardGame.isFavorite);
+    const {isFavorite, toggleFavorite} = useFavorite(cardGame.id, cardGame.isFavorite);
 
     return (
         <div className="">

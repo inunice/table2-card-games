@@ -1,45 +1,8 @@
 import CardGameCard from "./components/CardGameCard"
+import { cardService } from "./services/cardService";
+import { useState, useEffect } from "react";
 
 import { Dices } from 'lucide-react';
-
-const data: CardGame[] = [
-    {
-        "id": 1,
-        "name": "Flip 7",
-        "description": "Six Seven!",
-        "isFavorite": true
-    },
-    {
-        "id": 2,
-        "name": "Uno No Mercy",
-        "description": "Sad uno",
-        "isFavorite": false
-    },
-        {
-        "id": 1,
-        "name": "Flip 7",
-        "description": "Six Seven!",
-        "isFavorite": true
-    },
-    {
-        "id": 2,
-        "name": "Uno No Mercy",
-        "description": "Sad uno",
-        "isFavorite": false
-    },
-        {
-        "id": 3,
-        "name": "Flip 67",
-        "description": "Six Ten!",
-        "isFavorite": true
-    },
-    {
-        "id": 4,
-        "name": "Uno With Mercy",
-        "description": "Happy uno",
-        "isFavorite": true
-    }
-]
 
 export default function Home() {
 
@@ -51,6 +14,27 @@ export default function Home() {
   //     return data.filter((current) => current.isFavorite === true);
   // }
 
+  const [data, setData] = useState([]);
+
+  useEffect(() => {
+    const fetchCardGames = async () => {
+      try {
+        // setLoading(true);
+        const res = await cardService.getAll();
+        console.log(res);
+        setData(res);
+      }
+      catch (err) {
+        // setError(err.message);
+      }
+      // finally {
+      //   setLoading(false);
+      // }
+    };
+
+    fetchCardGames();
+  }, []); 
+
   return (
     <div className="flex flex-col mx-20 my-12 gap-5">
 
@@ -61,7 +45,7 @@ export default function Home() {
 
       <div className="grid sm:grid-cols-3 gap-4 grid-cols-2">
       {data.map((cardGame) => (
-        <CardGameCard cardGame={cardGame} key={cardGame.id}/>
+        <CardGameCard cardGame={cardGame}/>
       ))}
       </div>
     </div>
