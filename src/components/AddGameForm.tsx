@@ -2,11 +2,15 @@ import { useState } from "react";
 import { cardService } from "../services/cardService";
 import { PlusCircle, Loader2 } from "lucide-react";
 
-export default function AddGameForm({ onGameAdded }) {
+interface AddGameFormProps {
+  onGameAdded: (newGame: CardGame) => void;
+}
+
+export default function AddGameForm({ onGameAdded }: AddGameFormProps) {
   const [formData, setFormData] = useState({ name: "", description: "", isFavorite: false });
   const [isSubmitting, setIsSubmitting] = useState(false);
 
-  const handleSubmit = async (e) => {
+  const handleSubmit = async (e: any) => {
     e.preventDefault();
     setIsSubmitting(true);
     try {
@@ -14,7 +18,7 @@ export default function AddGameForm({ onGameAdded }) {
       onGameAdded(newGame);
       setFormData({ name: "", description: "", isFavorite: false });
     } catch (err) {
-      console.error("Failed to add game:", err.message);
+      // console.error("Failed to add game:", err.message);
     } finally {
       setIsSubmitting(false);
     }

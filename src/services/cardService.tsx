@@ -26,7 +26,7 @@ export const cardService = {
     return response.json();
   },
 
-  create: async (gameData) => {
+  create: async (gameData: any) => {
     const res = await fetch(`${BASE_URL}/cardgames`, {
       method: "POST",
       headers: { "Content-Type": "application/json" },

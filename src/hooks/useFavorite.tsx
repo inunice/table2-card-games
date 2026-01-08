@@ -12,7 +12,7 @@ export default function useFavorite(gameId: number, currentIsFavorite: boolean) 
         try {
             await cardService.updateFavorite(gameId, newValue);
         } catch (err) {
-            console.error("Failed to save favorite:", err.message);
+            // console.error("Failed to save favorite:", err.message);
             setisFavorite(!newValue); 
             alert("Could not save favorite. Please try again.");
         }

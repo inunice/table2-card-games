@@ -18,7 +18,7 @@ export default function Home() {
   //     return data.filter((current) => current.isFavorite === true);
   // }
 
-  const [data, setData] = useState([]);
+  const [data, setData] = useState<CardGame[]>([]);
 
   useEffect(() => {
     const fetchCardGames = async () => {
@@ -44,10 +44,10 @@ export default function Home() {
   };
 
   return (
-    <div className="flex flex-col sm:mx-36 my-12 gap-10">
-      <div className="flex flex-row justify-center items-center gap-1">
-        <Dices size={32} className="text-ocean" />
-        <span className="text-3xl font-bold text-coral">Janine's Card Games</span>
+    <div className="flex flex-col sm:mx-36 mx-2 my-12 gap-10">
+      <div className="flex flex-row items-center justify-center items-center gap-1">
+        <Dices size={28} className="text-ocean" />
+        <span className="sm:text-3xl text-xl font-bold text-coral">Janine's Card Games</span>
       </div>
       {loading && <div className="flex flex-col justify-center items-center gap-2">
         <Loader className="animate-spin" />
