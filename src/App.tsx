@@ -43,9 +43,9 @@ const data: CardGame[] = [
 
 export default function Home() {
 
-  function isFavorite(current: CardGame) {
-    return current.isFavorite === true;
-  }
+  // function isFavorite(current: CardGame) {
+  //   return current.isFavorite === true;
+  // }
 
   // function filterFavorites =  {
   //     return data.filter((current) => current.isFavorite === true);
