@@ -3,6 +3,8 @@ import { Welcome } from "../welcome/welcome";
 
 import CardGameCard from "../components/CardGameCard"
 
+import { Dices } from 'lucide-react';
+
 const data: CardGame[] = [
     {
         "id": 1,
@@ -39,7 +41,10 @@ const data: CardGame[] = [
 export default function Home() {
   return (
     <div className="flex flex-col mx-20 my-12 gap-5">
-      <span className="text-3xl font-bold text-coral">Janine's Card Games</span>
+      <div className="flex flex-row justify-center items-center gap-1">
+        <Dices className="text-5xl text-ocean" />
+        <span className="text-3xl font-bold text-coral">Janine's Card Games</span>
+      </div>
       <div className="grid sm:grid-cols-3 gap-4 grid-cols-2">
       {data.map((cardGame) => (
         <CardGameCard cardGame={cardGame} key={cardGame.id}/>
