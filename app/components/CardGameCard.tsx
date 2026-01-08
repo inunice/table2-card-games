@@ -1,5 +1,5 @@
-import { useState } from "react";
 import FavoriteButton from "./FavoriteButton";
+import useFavorite from "hooks/useFavorite"
 
 interface CardGameProps {
     cardGame: CardGame;
@@ -7,12 +7,8 @@ interface CardGameProps {
 
 export default function CardGameCard({cardGame}: CardGameProps) {
 
-    const [isFavorited, setIsFavorited] = useState(true);
-
-    const toggleFavorite = (nextValue: boolean) => {
-        setIsFavorited(!isFavorited);
-    }
-
+    const {isFavorited, toggleFavorite} = useFavorite();
+    
     return (
         <div className="">
             <div className="flex flex-col px-4 py-4 bg-muted rounded-t-xl">
